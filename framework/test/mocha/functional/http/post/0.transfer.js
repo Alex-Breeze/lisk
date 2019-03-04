@@ -94,7 +94,7 @@ describe('POST /api/transactions (type 0) transfer funds', () => {
 
 		it('using zero amount should fail', async () => {
 			transaction = transfer({
-				amount: new Bignum(0),
+				amount: new Bignum(0).toString(),
 				passphrase: accountFixtures.genesis.passphrase,
 				recipientId: account.address,
 			});
@@ -110,7 +110,7 @@ describe('POST /api/transactions (type 0) transfer funds', () => {
 
 		it('when sender has no funds should fail', async () => {
 			transaction = transfer({
-				amount: new Bignum(1),
+				amount: new Bignum(1).toString(),
 				passphrase: account.passphrase,
 				recipientId: '1L',
 			});
@@ -218,7 +218,7 @@ describe('POST /api/transactions (type 0) transfer funds', () => {
 		describe('with offset', () => {
 			it('using -10000 should be ok', async () => {
 				transaction = transfer({
-					amount: 1,
+					amount: '1',
 					passphrase: accountFixtures.genesis.passphrase,
 					recipientId: accountOffset.address,
 					timeOffset: -10000,
@@ -232,7 +232,7 @@ describe('POST /api/transactions (type 0) transfer funds', () => {
 
 			it('using future timestamp should fail', async () => {
 				transaction = transfer({
-					amount: 1,
+					amount: '1',
 					passphrase: accountFixtures.genesis.passphrase,
 					recipientId: accountOffset.address,
 					timeOffset: 10000,
@@ -260,7 +260,7 @@ describe('POST /api/transactions (type 0) transfer funds', () => {
 					it(`using ${test.description} should fail`, async () => {
 						const accountAdditionalData = randomUtil.account();
 						transaction = transfer({
-							amount: 1,
+							amount: '1',
 							passphrase: accountFixtures.genesis.passphrase,
 							recipientId: accountAdditionalData.address,
 						});
@@ -286,7 +286,7 @@ describe('POST /api/transactions (type 0) transfer funds', () => {
 					it(`using ${test.description} should be ok`, async () => {
 						const accountAdditionalData = randomUtil.account();
 						transaction = transfer({
-							amount: 1,
+							amount: '1',
 							passphrase: accountFixtures.genesis.passphrase,
 							recipientId: accountAdditionalData.address,
 							data: test.input,
@@ -305,7 +305,7 @@ describe('POST /api/transactions (type 0) transfer funds', () => {
 					const additioinalData = "'0'";
 					const accountAdditionalData = randomUtil.account();
 					transaction = transfer({
-						amount: 1,
+						amount: '1',
 						passphrase: accountFixtures.genesis.passphrase,
 						recipientId: accountAdditionalData.address,
 						data: additioinalData,
@@ -325,7 +325,7 @@ describe('POST /api/transactions (type 0) transfer funds', () => {
 					const additioinalData = '\u0000 hey:)';
 					const accountAdditionalData = randomUtil.account();
 					transaction = transfer({
-						amount: 1,
+						amount: '1',
 						passphrase: accountFixtures.genesis.passphrase,
 						recipientId: accountAdditionalData.address,
 						data: additioinalData,
