@@ -28,6 +28,11 @@
 		"format":
 			"prettier --write \"./*.{js,json,md}\" \"{api,config,docs,helpers,logic,modules,schema,scripts,storage,tasks,test,framework}{,/**}/*.{js,json,md}\"",
 		"test": "grunt",
+		"test:unit": "npm run jest:unit | npm test -- mocha:default:unit",
+		"test:functional":
+			"npm run jest:functional | npm test -- mocha:default:functional",
+		"test:integration":
+			"npm run jest:integration | npm test -- mocha:default:integration",
 		"grunt": "grunt",
 		"mocha": "mocha",
 		"jest:unit":
